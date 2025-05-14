@@ -1,24 +1,93 @@
-# Compiled class file
-*.class
 
-# Log file
-*.log
+import java.util.ArrayList;
+import java.util.Scanner;
 
-# BlueJ files
-*.ctxt
+public class bibliotecaunifacisa {
+    public static void main(String[] args) {
+        ArrayList<String> livros= new ArrayList<>();
+        ArrayList<String> autor= new ArrayList<>();
+        Scanner scan=new Scanner(System.in);
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
+        int opcaoprincipal;
+        String nomedolivro;
+        String nomedoautor;
 
-# Package Files #
-*.jar
-*.war
-*.nar
-*.ear
-*.zip
-*.tar.gz
-*.rar
+        System.out.println("Bem vindo a Biblioteca enjoy the life!");
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
-hs_err_pid*
-replay_pid*
+        while (true){
+            System.out.println("Abaixo estao as opcoes disponiveis no momento: \n" +
+                    "1) Adicionar novo Livro.\n" +
+                    "2) Pesquisar livro por titulo.\n" +
+                    "3) Excluir livro por Titulo. \n" +
+                    "4) Listar todos os livros. \n" +
+                    "5) Sair do sistema.\n ");
+            System.out.print("A opçao desejada é: ");
+            opcaoprincipal= scan.nextInt();
+            scan.nextLine();
+
+            switch (opcaoprincipal){
+                case 1:
+                    System.out.print("Digite o nome do livro que deseja adicionar: ");
+                    nomedolivro = scan.nextLine().trim();
+                    if (nomedolivro.isEmpty()) {
+                        System.out.println("Erro: o nome do livro não pode estar vazio.");
+                        break;
+                    }
+                    System.out.print("Digite o nome do autor: ");
+                    nomedoautor = scan.nextLine().trim();
+                    livros.add(nomedolivro);
+                    autor.add(nomedoautor);
+                    System.out.println("Livro adicionado com sucesso!");
+                    break;
+
+
+
+
+                        default:
+                    System.out.println("ERRO! Por favor digite um numero valido! ");
+
+                case 2:
+                    System.out.print("Pesquisar livro por titulo: ");
+                    nomedolivro= scan.nextLine();
+                    if (livros.contains(nomedolivro)){
+                        int index = livros.indexOf(nomedolivro);
+                        System.out.println("Título: " + livros.get(index));
+                        System.out.println("Autor: " + autor.get(index));
+                    } else {
+                        System.out.println("Livro nao encontrado");
+
+                    } break;
+
+            case 3:
+                System.out.print("Digite o título do livro que você deseja remover:");
+                String remover = scan.nextLine();
+                if (livros.contains(remover)) {
+                    int index = livros.indexOf(remover);
+                    livros.remove(index);
+                    autor.remove(index);
+                    System.out.println("Livro removido com sucesso!");
+                    } else {
+                        System.out.println("Livro não encontrado.");
+                    } break;
+
+                case 4:
+                    for (int i = 0; i < livros.size(); i++) {
+                        System.out.println("Título: " + livros.get(i));
+                        System.out.println("Autor: " + autor.get(i));
+                        System.out.println("-----");
+                    } break;
+                case 5:
+                    System.out.println("Volte sempre!");
+                    System.out.println("Saindo...");
+                    return;
+
+
+            }
+
+
+
+
+
+            }
+        }
+    }
